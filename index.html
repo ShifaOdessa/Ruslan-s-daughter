@@ -2,7 +2,7 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Поздравление с рождением дочки | 4 сына + 1 дочь</title>
     <style>
         * {
@@ -18,31 +18,34 @@
             align-items: center;
             min-height: 100vh;
             font-family: 'Arial', sans-serif;
-            padding: 20px;
+            padding: 10px;
+            margin: 0;
         }
 
+        /* Карточка теперь гибкая, масштабируется по ширине экрана */
         .card {
-            width: 297mm;
-            height: 210mm;
+            width: 100%;
+            max-width: 100%;
+            aspect-ratio: 297 / 210;
             background: linear-gradient(145deg, #1a2a4a 0%, #0f1a2f 50%, #3b1e3f 100%);
             position: relative;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 3px solid #c9a84c;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.5);
+            border: 2px solid #c9a84c;
             color: white;
             font-family: 'Arial', sans-serif;
-            page-break-after: avoid;
-            page-break-inside: avoid;
+            border-radius: 8px;
         }
 
+        /* Звёздный фон */
         .stars-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: radial-gradient(circle at 30% 20%, rgba(255,215,0,0.2) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 70%, rgba(255,105,180,0.2) 0%, transparent 50%);
+            background: radial-gradient(circle at 30% 20%, rgba(255,215,0,0.25) 0%, transparent 60%),
+                        radial-gradient(circle at 80% 70%, rgba(255,105,180,0.25) 0%, transparent 60%);
             pointer-events: none;
             z-index: 0;
         }
@@ -59,183 +62,200 @@
             opacity: 0.4;
         }
 
+        /* Левая панель с мальчиками */
         .boys-side {
             position: absolute;
             left: 0;
             top: 0;
             height: 100%;
-            width: 28%;
+            width: 26%;
             background: linear-gradient(180deg, #2c3e50 0%, #1e2b38 100%);
             clip-path: polygon(0 0, 100% 0, 85% 100%, 0% 100%);
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 20px;
+            padding: 5% 4%;
             z-index: 2;
-            border-right: 2px solid #7f8c8d;
+            border-right: 1px solid #7f8c8d;
         }
 
         .boy-icon {
-            font-size: 40px;
-            margin: 8px 0;
+            font-size: clamp(20px, 5vw, 40px);
+            margin: 3px 0;
             color: #5dade2;
-            filter: drop-shadow(0 0 5px #2e86c1);
+            filter: drop-shadow(0 0 4px #2e86c1);
         }
 
         .boys-label {
             color: #aed6f1;
             font-weight: bold;
-            font-size: 18px;
-            margin-top: 10px;
+            font-size: clamp(11px, 2.2vw, 18px);
+            margin-top: 6px;
             text-align: center;
-            letter-spacing: 2px;
+            letter-spacing: 1px;
             text-transform: uppercase;
             background: rgba(0,0,0,0.4);
-            padding: 5px 10px;
+            padding: 4px 8px;
             border-radius: 20px;
+            line-height: 1.2;
         }
 
+        /* Центральный контент */
         .center-content {
             position: absolute;
-            left: 30%;
+            left: 28%;
             top: 0;
             height: 100%;
-            width: 70%;
+            width: 72%;
             z-index: 3;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            padding: 20px 30px 20px 10px;
+            padding: 2% 3% 2% 1%;
         }
 
         .main-title {
-            font-size: 42px;
+            font-size: clamp(20px, 5.5vw, 42px);
             font-weight: 900;
             text-align: center;
             background: linear-gradient(180deg, #ffd966 0%, #f1c40f 50%, #d4ac0d 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            text-shadow: 0 0 15px rgba(241,196,15,0.4);
-            margin-bottom: 8px;
+            text-shadow: 0 0 12px rgba(241,196,15,0.5);
+            margin-bottom: 4px;
             letter-spacing: 1px;
+            line-height: 1.2;
         }
 
         .sub-title {
-            font-size: 24px;
+            font-size: clamp(14px, 3vw, 24px);
             color: #f5b7b1;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             font-weight: 500;
             border-bottom: 2px dashed #f1c40f;
-            padding-bottom: 10px;
+            padding-bottom: 6px;
             width: 90%;
         }
 
         .verse-box {
             background: rgba(255,255,255,0.1);
-            backdrop-filter: blur(5px);
-            border-radius: 20px;
-            padding: 20px;
+            backdrop-filter: blur(4px);
+            border-radius: 16px;
+            padding: 5% 4%;
             border: 1px solid rgba(241,196,15,0.5);
-            margin-bottom: 20px;
+            margin-bottom: 8px;
             width: 95%;
             text-align: center;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.3);
         }
 
         .verse-line {
-            font-size: 20px;
-            line-height: 1.6;
+            font-size: clamp(12px, 2.4vw, 20px);
+            line-height: 1.5;
             font-weight: bold;
             color: #f7dc6f;
-            text-shadow: 1px 1px 3px black;
+            text-shadow: 1px 1px 2px black;
         }
 
         .highlight {
             color: #f1948a;
-            font-size: 26px;
+            font-size: clamp(16px, 3vw, 26px);
             font-weight: 900;
         }
 
         .king-message {
-            font-size: 28px;
+            font-size: clamp(16px, 3.5vw, 28px);
             font-weight: 900;
             background: #f1c40f;
             color: #1e2b38;
-            padding: 12px 25px;
+            padding: 8px 15px;
             border-radius: 40px;
-            margin: 15px 0;
+            margin: 8px 0;
             text-align: center;
-            box-shadow: 0 0 25px #f39c12;
+            box-shadow: 0 0 20px #f39c12;
             letter-spacing: 1px;
             transform: rotate(-1deg);
+            line-height: 1.3;
         }
 
         .instruction {
-            font-size: 14px;
-            color: #bbb;
+            font-size: clamp(9px, 1.5vw, 14px);
+            color: #ccc;
             text-align: center;
-            margin-top: 5px;
+            margin-top: 4px;
             font-style: italic;
             background: rgba(0,0,0,0.5);
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 5px 10px;
+            border-radius: 14px;
+            line-height: 1.4;
         }
 
         .girl-corner {
             position: absolute;
-            right: 15px;
-            top: 20px;
-            font-size: 70px;
+            right: 2%;
+            top: 2%;
+            font-size: clamp(30px, 8vw, 70px);
             z-index: 4;
-            filter: drop-shadow(0 0 15px #ff69b4);
+            filter: drop-shadow(0 0 12px #ff69b4);
             transform: rotate(10deg);
         }
 
         .crown-icon {
             position: absolute;
-            right: 20px;
-            bottom: 30px;
-            font-size: 55px;
+            right: 3%;
+            bottom: 4%;
+            font-size: clamp(28px, 7vw, 55px);
             z-index: 4;
-            filter: drop-shadow(0 0 20px gold);
+            filter: drop-shadow(0 0 15px gold);
             transform: rotate(-5deg);
         }
 
         .footer-text {
             position: absolute;
-            bottom: 15px;
-            left: 32%;
+            bottom: 2%;
+            left: 30%;
             color: #f1c40f;
-            font-size: 16px;
+            font-size: clamp(10px, 1.8vw, 16px);
             font-weight: bold;
             z-index: 5;
             background: rgba(0,0,0,0.6);
-            padding: 5px 20px;
-            border-radius: 20px;
+            padding: 3px 12px;
+            border-radius: 14px;
+            white-space: nowrap;
         }
 
         .colleague-note {
             position: absolute;
-            bottom: 15px;
-            right: 25px;
-            color: #ccc;
-            font-size: 13px;
+            bottom: 2%;
+            right: 3%;
+            color: #ddd;
+            font-size: clamp(9px, 1.5vw, 13px);
             z-index: 5;
             font-style: italic;
+            background: rgba(0,0,0,0.5);
+            padding: 2px 10px;
+            border-radius: 10px;
         }
 
-        @media screen and (max-width: 1000px) {
-            .card {
-                width: 100%;
-                height: auto;
-                aspect-ratio: 297/210;
+        /* Убираем фиксированные размеры на очень маленьких экранах */
+        @media screen and (max-width: 600px) {
+            .footer-text {
+                white-space: normal;
+                text-align: center;
+                left: 28%;
+                right: 2%;
+            }
+            .colleague-note {
+                bottom: 1%;
+                right: 2%;
             }
         }
 
+        /* Печать — возвращаем точный А4 */
         @media print {
             body {
                 background: white;
@@ -243,11 +263,49 @@
                 margin: 0;
             }
             .card {
+                width: 297mm;
+                height: 210mm;
+                aspect-ratio: auto;
                 box-shadow: none;
                 border: 2px solid #c9a84c;
-                width: 100%;
-                height: 100vh;
-                page-break-after: avoid;
+                border-radius: 0;
+                max-width: 100%;
+            }
+            .boy-icon {
+                font-size: 40px;
+            }
+            .boys-label {
+                font-size: 18px;
+            }
+            .main-title {
+                font-size: 42px;
+            }
+            .sub-title {
+                font-size: 24px;
+            }
+            .verse-line {
+                font-size: 20px;
+            }
+            .highlight {
+                font-size: 26px;
+            }
+            .king-message {
+                font-size: 28px;
+            }
+            .instruction {
+                font-size: 14px;
+            }
+            .girl-corner {
+                font-size: 70px;
+            }
+            .crown-icon {
+                font-size: 55px;
+            }
+            .footer-text {
+                font-size: 16px;
+            }
+            .colleague-note {
+                font-size: 13px;
             }
         }
     </style>
@@ -256,15 +314,17 @@
     <div class="card">
         <div class="stars-bg"></div>
 
+        <!-- Блок с мальчиками -->
         <div class="boys-side">
             <div class="boy-icon">👦🏻</div>
             <div class="boy-icon">👦🏼</div>
             <div class="boy-icon">👦🏽</div>
             <div class="boy-icon">👦🏾</div>
             <div class="boys-label">БАНДА<br>БРАТЬЕВ</div>
-            <div style="font-size: 24px; margin-top: 10px; color: #f1c40f;">⚔️🛡️</div>
+            <div style="font-size: clamp(16px, 4vw, 24px); margin-top: 6px; color: #f1c40f;">⚔️🛡️</div>
         </div>
 
+        <!-- Центральный текст -->
         <div class="center-content">
             <div class="main-title">ЭКСТРЕННЫЙ ВЫПУСК!</div>
             <div class="sub-title">В семье переворот 🍼✨</div>
@@ -293,6 +353,7 @@
             </div>
         </div>
 
+        <!-- Декоративные элементы -->
         <div class="girl-corner">👶🏻🎀</div>
         <div class="crown-icon">👸🏼</div>
         
